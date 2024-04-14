@@ -8,10 +8,12 @@ Este repositório tem como objetivo criar uma POC utilizando [streamlit](https:/
 - Para edição facilitada do código use o **VSCode**, instalação [aqui](https://code.visualstudio.com/)
 - Para melhor controle de versões de instalação do *Python* use o **Pyenv**, guia de instalação [aqui](https://www.youtube.com/watch?v=HTx18uyyHw8) e documentação [aqui](https://github.com/pyenv/pyenv)
 - Para gerenciamento de pacotes de dependências use o **Poetry**, consulte a  documentação [aqui](https://python-poetry.org/docs/)
+- Para rodar a instância do banco de dados, usaremos [Docker](https://docs.docker.com/) e [Docker-compose](https://docs.docker.com/compose/)
 
-## Ajustando o ambiente e acessando a documentação
 
-Uma vez com os pré-requisitos atendidos você pode clonar este repositório para um repositório local na sua máquina e começar seu projeto a partir dele
+## Ajustando o ambiente e subindo banco PostgreSQL
+
+Uma vez com os pré-requisitos atendidos você pode clonar este repositório para um repositório local na sua máquina e começar a executá-lo
 
 - Clone o repositório:
 
@@ -20,7 +22,7 @@ Uma vez com os pré-requisitos atendidos você pode clonar este repositório par
     cd poc-streamlit #Navegue até a pasta do projeto
 ```
 
-- Uma vez no diretório, execute os comandos do `Poetry` para acessar a documentação com os detalhes da base do projeto
+- Uma vez no diretório, execute os comandos do `Poetry` para preparar o ambiente do projeto
 
 ```bash
 poetry config virtualenvs.in-project true   #Comando para criar os ambientes virtuais dentro do projeto
@@ -29,6 +31,21 @@ poetry config virtualenvs.prefer-active-python true #Comando para o poetry ident
 ```bash
 poetry install --no-root    #instalar as dependencias base do projeto
 ```
+
+- Crie uma pasta chamada `pgdata`, ela será a montagem do volume do container do banco de dados PostgreSQL
+
+```bash
+mkdir pgdata
+```
+
+- Inicie o container com o banco de dados utilizando `docker-compose`
+
+```bash
+docker-compose up -d
+```
+
+- Execute o seguinte comando para iniciar aplicação
+
 ```bash
 poetry run task run    #iniciar o FrontEnd com Streamlit
 ```
