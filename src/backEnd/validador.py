@@ -37,4 +37,4 @@ def validarExcel(arquivo):
 
 def inserirExcelBanco(df):
     """Carrega Dataframe no Banco de dados."""
-    df.to_sql("metas", con=DATABASE_URL, if_exists="replace", index=False)
+    df.to_sql("metas", con=DATABASE_URL, if_exists="append", index=False)
