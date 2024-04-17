@@ -8,7 +8,7 @@ RUN pip install poetry
 
 RUN poetry config virtualenvs.create false
 
-RUN poetry install --without tests,docs,dev --no-root
+RUN poetry install --without dev --no-root
 
 COPY . /app/
 
