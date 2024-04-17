@@ -5,7 +5,8 @@ import pandas as pd
 
 from contracts.contratoMetas import Metas
 
-DATABASE_URL = "postgresql://admin:admin@localhost:5432/poc_streamlit"
+DATABASE_URL = "postgresql://admin:Hg9n2uF95K7gBeKAe0NTycC1WKuwDdHD@\
+    dpg-cofgrvn79t8c73c3nqkg-a.ohio-postgres.render.com/pocstreamlit"
 
 
 def validarExcel(arquivo):
