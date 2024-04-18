@@ -1,5 +1,7 @@
 """Este módulo executa a aplicação como um todo."""
 
+from streamlit import markdown
+
 from backEnd.validador import inserirExcelBanco, validarExcel
 from frontEnd.ui import ValidadorMetasUI
 
@@ -11,6 +13,8 @@ def app():
 
     arquivo = ui.uploadArquivo()
 
+    markdown("---")
+
     if arquivo:
         df, result, error = validarExcel(arquivo)
         ui.resultados(result, error)
@@ -20,6 +24,8 @@ def app():
         elif ui.inserirBanco():
             inserirExcelBanco(df)
             ui.sucesso()
+
+    ui.downloadExemplo()
 
 
 if __name__ == "__main__":
